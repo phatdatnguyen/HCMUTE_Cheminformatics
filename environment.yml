@@ -1,0 +1,13 @@
+name: cheminformatics
+variables:
+  # Use MKL's supported sequential backend alongside PyTorch's CPU runtime.
+  MKL_THREADING_LAYER: SEQUENTIAL
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - psi4=1.11
+  - mopac=23.2.5
+  - pip
+  - pip:
+      - -r requirements-chapters1-12.txt

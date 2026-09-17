@@ -3,6 +3,9 @@ __pycache__/
 .vs/
 .ipynb_checkpoints/
 trajectories/
+.venv/
+.conda-qm/
+outputs/
 
 *.xyz
 *.pdb

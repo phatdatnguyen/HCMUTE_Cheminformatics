@@ -1,0 +1,151 @@
+{
+  "checked_on": "2026-09-15",
+  "scope": "Audit of pre-existing course CSV files; no source rows or labels changed",
+  "processing_history": "The audit establishes correspondence to public snapshots. The original course export steps are undocumented.",
+  "datasets": {
+    "Solubility.csv": {
+      "local_sha256": "3fedd5ad80f9231bd331929ba0943a117d0d6ee3f75eda9a27fab9b4ab974ad5",
+      "rows": 1121,
+      "columns": [
+        "smiles",
+        "solubility"
+      ],
+      "target_column": "solubility",
+      "audit": {
+        "rdkit_version": "2026.03.6",
+        "invalid_smiles_rows_zero_based": [],
+        "duplicate_extra_rows_by_canonical_isomeric_smiles": 11,
+        "canonical_groups_with_distinct_targets": 6,
+        "disconnected_valid_records": 0
+      },
+      "source_files": [
+        {
+          "url": "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/delaney-processed.csv",
+          "sha256": "8c06a76f0c6487d29ab0f903e6a7a7139f189ab3c1178f159c8be8964602f189",
+          "rows": 1128,
+          "target_column": "measured log solubility in mols per litre"
+        }
+      ],
+      "verification": {
+        "matched_local_rows": 1121,
+        "comparison": "trimmed SMILES and target multiset; each upstream record used at most once",
+        "maximum_target_difference": 1.7763568394002505e-15,
+        "unmatched_upstream_rows": 7
+      },
+      "target_definition": "log10(S / (1 mol/L)); measured aqueous solubility column, not the ESOL model-predicted column"
+    },
+    "Lipophilicity.csv": {
+      "local_sha256": "657596792d4980fc196e7833a98bf1373dc0b4f8f52ece0f905f59abfac44b80",
+      "rows": 4200,
+      "columns": [
+        "smiles",
+        "lipophilicity"
+      ],
+      "target_column": "lipophilicity",
+      "audit": {
+        "rdkit_version": "2026.03.6",
+        "invalid_smiles_rows_zero_based": [],
+        "duplicate_extra_rows_by_canonical_isomeric_smiles": 0,
+        "canonical_groups_with_distinct_targets": 0,
+        "disconnected_valid_records": 1
+      },
+      "source_files": [
+        {
+          "url": "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/Lipophilicity.csv",
+          "sha256": "aed41590cb30609d51d8e08ad3ff06495a76e80e211358801f596b10da69bacd",
+          "rows": 4200,
+          "target_column": "exp"
+        }
+      ],
+      "verification": {
+        "matched_local_rows": 4200,
+        "comparison": "trimmed SMILES and target multiset; each upstream record used at most once",
+        "maximum_target_difference": 0.0,
+        "unmatched_upstream_rows": 0
+      },
+      "target_definition": "experimental octanol/water distribution coefficient logD at pH 7.4; not a computed neutral-species logP"
+    },
+    "BBBP.csv": {
+      "local_sha256": "d07a38487aeac5cee5508413e468043ef3097451d2a112701c2d60be9ec6b662",
+      "rows": 2050,
+      "columns": [
+        "num",
+        "name",
+        "p_np",
+        "smiles"
+      ],
+      "target_column": "p_np",
+      "audit": {
+        "rdkit_version": "2026.03.6",
+        "invalid_smiles_rows_zero_based": [
+          59,
+          61,
+          391,
+          614,
+          642,
+          645,
+          646,
+          647,
+          648,
+          649,
+          685
+        ],
+        "duplicate_extra_rows_by_canonical_isomeric_smiles": 64,
+        "canonical_groups_with_distinct_targets": 10,
+        "disconnected_valid_records": 105
+      },
+      "source_files": [
+        {
+          "url": "https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/BBBP.csv",
+          "sha256": "d07a38487aeac5cee5508413e468043ef3097451d2a112701c2d60be9ec6b662",
+          "rows": 2050,
+          "target_column": "p_np"
+        }
+      ],
+      "verification": {
+        "matched_local_rows": 2050,
+        "comparison": "trimmed SMILES and target multiset; each upstream record used at most once",
+        "maximum_target_difference": 0.0,
+        "unmatched_upstream_rows": 0
+      },
+      "target_definition": "binary benchmark p_np label: 1 reported permeable, 0 reported non-permeable; not a clinical endpoint"
+    },
+    "BuchwaldHartwigReactionYield.csv": {
+      "local_sha256": "ff4ff0336e2f244e7b01058499634aea9714470d518af0044d355163c5a39972",
+      "rows": 3955,
+      "columns": [
+        "Ligand",
+        "Additive",
+        "Base",
+        "Aryl halide",
+        "Yield"
+      ],
+      "target_column": "Yield",
+      "target_definition": "reported reaction yield in percent for the fixed HTE screen; errors are percentage points",
+      "audit": {
+        "role_unique_SMILES_counts": {
+          "Ligand": 4,
+          "Additive": 22,
+          "Base": 3,
+          "Aryl halide": 15
+        },
+        "duplicate_component_tuples": 0,
+        "target_min": 0.0,
+        "target_max": 99.99999
+      },
+      "source_files": [
+        {
+          "url": "https://raw.githubusercontent.com/rxn4chemistry/rxn_yields/master/data/Buchwald-Hartwig/Dreher_and_Doyle_input_data.xlsx",
+          "sha256": "d7f318abfbb42eaadca482b1e9aa54540eeed60e0089b6a0eb4e75366c31ee2e",
+          "sheet": "FullCV_01",
+          "rows": 3955,
+          "target_column": "Output"
+        }
+      ],
+      "verification": {
+        "matched_local_rows": 3955,
+        "comparison": "all four component strings, row order, and numeric target identical; Output renamed Yield"
+      }
+    }
+  }
+}

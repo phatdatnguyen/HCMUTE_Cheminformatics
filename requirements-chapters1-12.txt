@@ -1,0 +1,4 @@
+# Chapters 12.1-12.5 implement message passing directly with PyTorch.
+# Chapters 12.6-12.8 use PyTorch Geometric; no compiled graph extensions or GPU are required.
+-r requirements-chapters1-11.txt
+torch-geometric==2.8.0.post1

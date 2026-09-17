@@ -1,0 +1,4 @@
+# Python dependencies for Chapters 1-7.
+# Install Psi4 and MOPAC with environment.yml; they are not pip requirements.
+-r requirements-chapters1-3.txt
+scipy>=1.14,<2

@@ -1,0 +1,6 @@
+# PyTorch CPU wheels for Windows/Linux; native macOS wheels are on PyPI.
+# No torchvision, torchaudio, graph framework, or GPU runtime is required.
+--extra-index-url https://download.pytorch.org/whl/cpu
+-r requirements-chapters1-10.txt
+torch==2.11.0+cpu; platform_system != "Darwin"
+torch==2.11.0; platform_system == "Darwin"

@@ -1,0 +1,3 @@
+# Chapter 8 reuses the tested Chapters 1-7 software; no extra packages are needed.
+# Install Psi4 and MOPAC through environment.yml.
+-r requirements-chapters1-7.txt
